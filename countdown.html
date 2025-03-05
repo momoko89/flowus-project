@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to 2025-10-25</title>
+    <style>
+        /* 简单的样式设置 */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #countdown {
+            font-size: 36px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>距离 2025 年 10 月 25 日还有：</h1>
+    <div id="countdown"></div>
+
+    <script>
+        // 目标日期
+        const targetDate = new Date('2025-10-25').getTime();
+
+        // 更新倒计时的函数
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '时间已到！';
+                return;
+            }
+
+            // 计算天数
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+            // 确保天数显示为三位数
+            const formattedDays = days.toString().padStart(3, '0');
+
+            document.getElementById('countdown').innerHTML = formattedDays + ' 天';
+        }
+
+        // 初始调用
+        updateCountdown();
+
+        // 每秒更新一次倒计时
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+
+</html>
